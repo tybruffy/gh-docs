@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta, title, CSS, favicons, etc. -->
+		{% include header.html %}
+	</head>
+	<body class="{{page.slug}}">
+		<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+		<!-- Docs master nav -->
+		{% include nav-main.html %}
+
+		<!-- Docs page layout -->
+		<div class="bs-docs-header" id="content">
+			<div class="container">
+				<h1>
+					{% if page.title %}
+						{{ page.title }}
+					{% else %}
+						{{ site.project.name }}
+					{% endif %}
+				</h1>
+				<p>
+					{% if page.lead %}
+						{{ page.lead }}
+					{% else %}
+						{{ site.project.description }}
+					{% endif %}
+				</p>
+				{% include download.html %}
+			</div>
+		</div>
+
+		<div class="container bs-docs-container">
+
+			<div class="row">
+				<div class="col-md-9" role="main">
+					{{ content }}
+				</div>
+				<div class="col-md-3">
+					<div class="bs-docs-sidebar hidden-print" role="complementary">
+						{% include sidebars.html %}
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		{% include footer.html %}
+	</body>
+</html>

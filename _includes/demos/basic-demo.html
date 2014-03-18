@@ -1,0 +1,25 @@
+<h1 id="basic-demo" class="page-header">Basic Demo</h1>
+<div class="demo-description">
+	<p>Describe your example here.</p>
+	<p>Lorem ipsum Enim eiusmod tempor enim Ut ex ullamco sunt dolor Excepteur do tempor tempor tempor cillum dolor amet sunt ex exercitation.</p>
+</div>
+<div class="demo bs-example">
+	<div id="test-element" class="block">
+		<p>If this is a web based project, why not use this block to actually provide a demonstration?  Otherwise just use the next block to show off the code.</p>
+	</div>
+	<button id="button">Do Foo</button>
+</div>
+<div class="demo-code highlight">
+{% highlight html %}
+<div id="test-element" class="block">
+	<p>If this is a web based project, why not use this block to actually provide a demonstration?  Otherwise just use the next block to show off the code.</p>
+</div>
+<button id="button">Do Foo</button>
+{% endhighlight %}
+
+{% highlight js %}
+$("#button").on("click", function() {
+	$("#test-element").foo();
+});
+{% endhighlight %}
+</div>

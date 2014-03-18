@@ -1,0 +1,33 @@
+# Dependencies
+markdown:         rdiscount
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Server
+# source:           /
+# destination:      _gh_pages
+# host:             0.0.0.0
+# port:             9001
+# baseurl:          /
+# url:              /slide-load
+# encoding:         UTF-8
+safe:             true
+exclude:
+  - jade
+  - src
+  - vendor
+
+thing_name: &site_name "Site Name"
+
+# Custom vars
+project:
+  name: Project Name
+  repo: http://www.github.com/tybruffy/gh-docs
+  version: 1.0.0
+  description: A cool new project on Github
+
+author:
+  name:    Tyler Bruffy
+  website: http://tylerbruffy.com

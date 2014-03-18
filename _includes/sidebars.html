@@ -1,0 +1,5 @@
+{% if page.url == "/" %}
+	{% include nav-home.html %}
+{% elsif page.slug == "demos" %}
+	{% include nav-demos.html %}
+{% endif %}
