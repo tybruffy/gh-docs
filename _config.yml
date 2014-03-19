@@ -15,9 +15,9 @@ permalink:        pretty
 # encoding:         UTF-8
 safe:             true
 exclude:
-  - jade
-  - src
-  - vendor
+  - node_modules
+  - less
+  - gulpfile.js
 
 thing_name: &site_name "Site Name"
 

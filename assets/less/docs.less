@@ -29,7 +29,7 @@
  * Glyphicons 
  * Customizer
  * Miscellaneous 
- */   
+ */ 
 
 
 /*
@@ -38,12 +38,10 @@
  * Update the basics of our documents to prep for docs content.
  */
 
-@color1: #563d7c;
-@color2: #f9f9f9;
-@color3: #463265;
-@color4: #cdbfe3;
-@color5: #6f5499;
-@color6: #9783b9;
+@brand-color:           #1067b6;
+@accent-color-dark:     darken(@brand-color, 10%);
+@accent-color-light:    lighten(desaturate(@brand-color, 20%), 25%);
+@accent-color-offwhite: lighten(desaturate(@brand-color, 35%), 40%);
 
 body {
 	position: relative; /* For scrollspy */
@@ -57,28 +55,28 @@ body {
 
 /* Outline button for use within the docs */
 .btn-outline {
-	color: @color1;
+	color: @brand-color;
 	background-color: transparent;
-	border-color: @color1;
+	border-color: @brand-color;
 }
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active {
 	color: #fff;
-	background-color: @color1;
-	border-color: @color1;
+	background-color: @brand-color;
+	border-color: @brand-color;
 }
 
 /* Inverted outline button (white on dark) */
 .btn-outline-inverse {
 	color: #fff;
 	background-color: transparent;
-	border-color: @color4;
+	border-color: @accent-color-offwhite;
 }
 .btn-outline-inverse:hover,
 .btn-outline-inverse:focus,
 .btn-outline-inverse:active {
-	color: @color1;
+	color: @brand-color;
 	text-shadow: none;
 	background-color: #fff;
 	border-color: #fff;
@@ -91,7 +89,7 @@ body {
 	color: #fff;
 	text-align: center;
 	cursor: default;
-	background-color: @color1;
+	background-color: @brand-color;
 	border-radius: 15%;
 }
 .bs-docs-booticon-sm {
@@ -107,12 +105,12 @@ body {
 	line-height: 140px;
 }
 .bs-docs-booticon-inverse {
-	color: @color1;
+	color: @brand-color;
 	background-color: #fff;
 }
 .bs-docs-booticon-outline {
 	background-color: transparent;
-	border: 1px solid @color4;
+	border: 1px solid @accent-color-offwhite;
 }
 
 
@@ -133,24 +131,24 @@ body {
 .bs-docs-nav .navbar-brand,
 .bs-docs-nav .navbar-nav > li > a {
 	font-weight: 500;
-	color: @color1;
+	color: @brand-color;
 }
 .bs-docs-nav .navbar-nav > li > a:hover,
 .bs-docs-nav .navbar-nav > .active > a,
 .bs-docs-nav .navbar-nav > .active > a:hover {
-	color: @color3;
-	background-color: @color2;
+	color: @accent-color-dark;
+	background-color: #f9f9f9;
 }
 .bs-docs-nav .navbar-toggle .icon-bar {
-	background-color: @color1;
+	background-color: @brand-color;
 }
 .bs-docs-nav .navbar-header .navbar-toggle {
 	border-color: #fff;
 }
 .bs-docs-nav .navbar-header .navbar-toggle:hover,
 .bs-docs-nav .navbar-header .navbar-toggle:focus {
-	background-color: @color2;
-	border-color: @color2;
+	background-color: #f9f9f9;
+	border-color: #f9f9f9;
 }
 
 
@@ -231,17 +229,18 @@ body {
 /* Share masthead with page headers */
 .bs-docs-masthead,
 .bs-docs-header {
+	@light: lighten(desaturate(@brand-color, 5%), 10%);
 	position: relative;
 	padding: 30px 15px;
-	color: @color4;
+	color: @accent-color-offwhite;
 	text-align: center;
 	text-shadow: 0 1px 0 rgba(0,0,0,.1);
-	background-color: @color5;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(@color1), to(@color5));
-	background-image: -webkit-linear-gradient(top, @color1 0%, @color5 100%);
-	background-image:      -o-linear-gradient(top, @color1 0%, @color5 100%);
-	background-image:         linear-gradient(to bottom, @color1 0%, @color5 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@color1', endColorstr='@color5', GradientType=0);
+	background-color: @light;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(@brand-color), to(@light));
+	background-image: -webkit-linear-gradient(top, @brand-color 0%, @light 100%);
+	background-image:      -o-linear-gradient(top, @brand-color 0%, @light 100%);
+	background-image:         linear-gradient(to bottom, @brand-color 0%, @light 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@brand-color', endColorstr='@light', GradientType=0);
 	background-repeat: repeat-x;
 }
 
@@ -262,7 +261,7 @@ body {
 .bs-docs-masthead .version {
 	margin-top: -15px;
 	margin-bottom: 30px;
-	color: @color6;
+	color: @accent-color-light;
 }
 .bs-docs-masthead .btn {
 	width: 100%;
@@ -468,19 +467,19 @@ body {
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
 	padding-left: 19px;
-	color: @color1;
+	color: @brand-color;
 	text-decoration: none;
 	background-color: transparent;
-	border-left: 1px solid @color1;
+	border-left: 1px solid @brand-color;
 }
 .bs-docs-sidebar .nav > .active > a,
 .bs-docs-sidebar .nav > .active:hover > a,
 .bs-docs-sidebar .nav > .active:focus > a {
 	padding-left: 18px;
 	font-weight: bold;
-	color: @color1;
+	color: @brand-color;
 	background-color: transparent;
-	border-left: 2px solid @color1;
+	border-left: 2px solid @brand-color;
 }
 
 /* Nav: second level (shown on .active) */
@@ -517,7 +516,7 @@ body {
 	color: #999;
 }
 .back-to-top:hover {
-	color: @color1;
+	color: @brand-color;
 	text-decoration: none;
 }
 
@@ -687,7 +686,7 @@ h1[id] {
 
 /* Docs colors */
 .color-swatches .bs-purple {
-	background-color: @color1;
+	background-color: @brand-color;
 }
 .color-swatches .bs-purple-light {
 	background-color: #c7bfd3;
@@ -696,7 +695,7 @@ h1[id] {
 	background-color: #e5e1ea;
 }
 .color-swatches .bs-gray {
-	background-color: @color2;
+	background-color: #f9f9f9;
 }
 
 
@@ -1005,7 +1004,7 @@ h1[id] {
 /* Popovers */
 .bs-example-popover {
 	padding-bottom: 24px;
-	background-color: @color2;
+	background-color: #f9f9f9;
 }
 .bs-example-popover .popover {
 	position: relative;
@@ -1089,7 +1088,7 @@ h1[id] {
 }
 .responsive-utilities td.is-hidden {
 	color: #ccc;
-	background-color: @color2 !important;
+	background-color: #f9f9f9 !important;
 }
 
 /* Responsive tests */
@@ -1155,7 +1154,7 @@ h1[id] {
 	font-size: 10px;
 	line-height: 1.4;
 	text-align: center;
-	background-color: @color2;
+	background-color: #f9f9f9;
 	border: 1px solid #fff;
 }
 .bs-glyphicons .glyphicon {
@@ -1170,7 +1169,7 @@ h1[id] {
 }
 .bs-glyphicons li:hover {
 	color: #fff;
-	background-color: @color1;
+	background-color: @brand-color;
 }
 
 @media (min-width: 768px) {
@@ -1292,8 +1291,8 @@ h1[id] {
 	width: 100%;
 	margin-bottom: 15px;
 	overflow: hidden;
-	color: @color1;
-	background-color: @color2;
+	color: @brand-color;
+	background-color: #f9f9f9;
 	border-radius: 4px;
 }
 
@@ -1307,7 +1306,7 @@ h1[id] {
 }
 .bs-brand-logos .inverse {
 	color: #fff;
-	background-color: @color1;
+	background-color: @brand-color;
 }
 .bs-brand-item .svg {
 	width: 144px;

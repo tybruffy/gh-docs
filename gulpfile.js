@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 
 gulp.task('less', function(cb) {
+	console.log( "compiling less files" )
 	gulp.src('./assets/less/docs.less')
 		.pipe(less({
 			compress: true,
@@ -12,11 +13,13 @@ gulp.task('less', function(cb) {
 });
 
 gulp.task('jekyll', ['less'], function() {
+	console.log( "starting jekyll" )
 	var child  = require('child_process').spawn
 	,	jekyll = child('jekyll', ['serve']);
 });
 
 gulp.task('watch', function() {
+	console.log( "watching less files." )
 	gulp.watch('./assets/less/*.less', ['jekyll']);
 });
 
