@@ -1,17 +1,5 @@
 var gulp = require('gulp');
-var less = require('gulp-less');
 var fs   = require('fs');
-
-gulp.task('less', function(cb) {
-	console.log( "compiling less files" )
-	gulp.src('./assets/less/docs.less')
-		.pipe(less({
-			compress: true,
-		}))
-		.pipe(gulp.dest('./assets/css/'));
-	
-	cb();
-});
 
 gulp.task('alt-less', function() {
 	var child  = require('child_process').spawn
