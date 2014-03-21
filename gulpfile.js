@@ -17,4 +17,4 @@ gulp.task('watch', function() {
 	gulp.watch('./assets/less/*.less', ['jekyll']);
 });
 
-gulp.task('default', ['alt-less']);
+gulp.task('default', ['watch']);
