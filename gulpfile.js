@@ -1,9 +1,9 @@
 var gulp = require('gulp');
 var fs   = require('fs');
 
-gulp.task('alt-less', function() {
+gulp.task('less', function() {
 	var child  = require('child_process').spawn
-	,	less = child('lessc', ['--yui-compress', './assets/less/docs.less', './assets/css/test.css']);
+	,	less = child('lessc', ['--yui-compress', './assets/less/docs.less', './assets/css/docs.min.css']);
 })
 
 gulp.task('jekyll', ['less'], function() {
