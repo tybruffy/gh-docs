@@ -1,0 +1,27 @@
+{
+  "name": "gh-docs",
+  "version": "0.1.0",
+  "description": "Simple github pages starter theme",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "~3.5.6",
+    "less": "~1.7.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.5.6",
+    "less": "^1.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tybruffy/gh-docs"
+  },
+  "author": "Tyler Bruffy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tybruffy/gh-docs/issues"
+  },
+  "homepage": "https://github.com/tybruffy/gh-docs"
+}
