@@ -58,3 +58,4 @@ _site
 build/buildinfo.properties
 build/config/buildinfo.properties
 
+node_modules
