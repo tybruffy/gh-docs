@@ -25,7 +25,7 @@ gulp.task('serve', connect.server({
 
 gulp.task('watch', function() {
 	gulp.watch('./assets/**/*.less', ['less']);
-	gulp.watch(['./assets/**/*.*', './**/*.html', '!./_site/**', '!./assets/**/*.less'], ['jekyll']);
+	gulp.watch(['./assets/**/*.*', './_includes/README.md', './**/*.html', '!./_site/**', '!./assets/**/*.less'], ['jekyll']);
 });
 
 gulp.task('develop', ['less', 'jekyll', 'watch', 'serve']);

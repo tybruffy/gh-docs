@@ -1,20 +1,21 @@
 ---
 layout: default
 slug: home
+sections:
+  - name: Basic Usage
+    slug: basic-usage
+  - name: Additional Options
+    slug: additional-options
+  - name: Events
+    slug: events
+  - name: Methods
+    slug: methods
+  - name: Todo
+    slug: todo
 ---
 <div class="bs-docs-section">
-	<h1 id="about" class="page-header">About</h1>
-	<p class="lead">{{site.project.name}} is a cool new project on github.</p>
-</div>
-
-<div class="bs-docs-section">
-	<h1 id="get-started" class="page-header">Get Started</h1>
-
-	<p>Getting Started: now</p>
-</div>
-<div class="bs-docs-section">
-	<h1 id="todo" class="page-header">Todo</h1>
-	<ul>
-		<li>Nothing {{site.project.name}} is perfect already</li>
-	</ul>
+	{% capture readme %}
+		{% include README.md %}
+	{% endcapture %}
+	{{ readme | markdownify }}
 </div>
