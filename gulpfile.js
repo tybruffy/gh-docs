@@ -5,6 +5,9 @@ var gulp       = require('gulp')
 ,	gutil      = require("gulp-util")
 ,	livereload = require("gulp-livereload")
 ,	connect    = require('gulp-connect')
+,	request    = require('request')
+,	fs         = require('fs')
+,	marked     = require('marked');
 
 gulp.task('less', function() {
 	gutil.log('compiling less');
@@ -32,14 +35,29 @@ gulp.task('develop', ['less', 'jekyll', 'watch', 'serve']);
 
 gulp.task('default', ['develop']);
 
-// gulp.task('less', function() {
-// 	gulp.src('./assets/less/docs.less')
-// 		.pipe(less({
-// 			yui-compress: true,
-// 		}))
-// 		.pipe(rename(function (path) {
-// 			path.basename += ".min";
-// 			path.extname = ".css"
-// 		}))
-// 		.pipe(gulp.dest('./assets/css'))
-// });
+
+gulp.task('readme', function() {
+	request('https://raw.githubusercontent.com/tybruffy/slide-load/master/README.md', function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+
+			var content = marked(body, {renderer: renderer})
+			count = content.match(/<h1.*id="(.*)">(.*)<\/h1>/g);
+			console.log( count )
+
+			fs.writeFile("./_includes/readme.html", content, function(err) {
+				if (err) {
+					gutil.log(err)
+				}
+			})
+
+		}
+	})
+});
+
+
+
+var renderer = new marked.Renderer();
+renderer.heading = function (txt, lvl) {
+	var escTxt = txt.toLowerCase().replace(/[^\w]+/g, '-');
+	return '<h'+ lvl +' class="page-header" id="'+ escTxt +'">'+ txt +'</h'+ lvl +'>';
+}
