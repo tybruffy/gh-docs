@@ -16,7 +16,8 @@
     "gulp-jekyll": "0.0.0",
     "gulp-livereload": "^1.2.0",
     "connect": "^2.14.3",
-    "gulp-connect": "^1.0.10"
+    "gulp-connect": "^1.0.10",
+    "request": "^2.34.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
