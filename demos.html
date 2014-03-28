@@ -3,8 +3,15 @@ layout: default
 title: Demos
 slug: demos
 lead: "Examples for how to use this project"
+sections:
+  - name: Basic Demo
+    slug: basic-demo
+    url: demos/basic-demo.html
 ---
 
-<div class="bs-docs-section demo-section">
-	{% include demos/basic-demo.html %}
-</div>
+{% for section in page.sections %}
+	<div class="bs-docs-section demo-section" id="{{section.slug}}">
+		{% include {{section.url}} %}
+	</div>
+{% endfor %}
+

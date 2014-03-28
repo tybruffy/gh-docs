@@ -1,0 +1,7 @@
+<ul class="nav bs-docs-sidenav">
+	{% for section in page.sections %}
+		<li>
+			<a href="#{{section.slug}}">{{section.name}}</a>
+		</li>
+	{% endfor %}
+</ul>
