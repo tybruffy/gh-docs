@@ -79,15 +79,15 @@ function convertReadme(content) {
 		.pipe(frontMatter({
 			remove: true
 		}))
-		.pipe(addData(sections))
+		.pipe(addData("sections", sections))
 		.pipe(addFrontMatter())
 		.pipe(rename("index.html"))
 		.pipe(gulp.dest("./"))
 }
 
-addData = function(data) {
+addData = function(key, value) {
 	return es.map(function (file, callback) {
-		file.frontMatter["sections"] = data;
+		file.frontMatter[key] = value;
 		callback(null, file)
 	})	
 };
