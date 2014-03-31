@@ -8,11 +8,16 @@ var gulp        = require('gulp')
 ,	request     = require('request')
 ,	fs          = require('fs')
 ,	marked      = require('marked')
+,	gmarked      = require('gulp-marked')
 ,	yaml        = require('js-yaml')
 ,	frontMatter = require('gulp-front-matter')
 ,	fm          = require('front-matter')
 ,	es          = require('event-stream')
 ,	streamifier = require('streamifier')
+,   gStreamify  = require('gulp-streamify')
+,	download    = require("gulp-download")
+,	gulpFilter  = require('gulp-filter');
+
 
 
 gulp.task('less', function() {
@@ -44,7 +49,7 @@ gulp.task('default', ['develop']);
 
 
 
-gulp.task('readme', function() {
+gulp.task('readme-file', function() {
 	var config = yaml.safeLoad(fs.readFileSync('./_config.yml', 'utf8'));
 
 	request(config.project.readme, function (error, response, body) {
@@ -64,12 +69,74 @@ gulp.task('readme', function() {
 	})
 });
 
+gulp.task('readme', function() {
+	var config = yaml.safeLoad(fs.readFileSync('./_config.yml', 'utf8'));
+	 var filter = gulpFilter('index.html');
+
+
+	download(config.project.readme)
+		.pipe(convertMD())
+		.pipe(rename("readme.html"))
+		.pipe(gulp.dest("./_includes"))
+		.pipe(parseReadme())
+		.pipe()
+
+		.pipe(logThing())
+		// .pipe(frontMatter({
+		// 	remove: true
+		// }))
+		// .pipe(logThing())
+
+
+});
+
+convertMD = function() {
+	return es.map(function (file, callback) {
+		if (file.isBuffer()) {
+			var md   = String(file.contents)
+			,	html = marked(md, {renderer: renderer})
+
+			file.contents = new Buffer(html)
+		}
+		callback(null, file)
+	})	
+};
+
+logThing = function() {
+	return es.map(function (file, callback) {
+		console.log( file.sections )
+		callback(null, file)
+	})	
+};
+
+changeThing = function() {
+	return es.map(function (file, callback) {
+		file = file.sections
+		callback(null, file)
+	})	
+};
+
+
+
+parseReadme = function(sections) {
+	return es.map(function (file, callback) {
+		var	regex    = /<h[1-6].*id="(.*)">(.*)<\/h[1-6]>/g
+		,	sections = []
+
+		while ((matches = regex.exec(file.contents)) !== null) {
+			sections.push({ slug: matches[1], name: matches[2] })
+		}
+		file.sections = sections
+		callback(null, file)
+	})		
+};
+
 
 function convertReadme(content) {
 	var	regex    = /<h[1-6].*id="(.*)">(.*)<\/h[1-6]>/g
 	,	sections = []
 
-	while ((matches = regex.exec(content)) !== null) {
+	while ((matches = regex.exec(file.contents)) !== null) {
 		sections.push({ slug: matches[1], name: matches[2] })
 	}
 
@@ -101,7 +168,6 @@ addFrontMatter = function(data) {
 		callback(null, file)
 	})	
 };
-
 
 var renderer = new marked.Renderer();
 renderer.heading = function (txt, lvl) {
