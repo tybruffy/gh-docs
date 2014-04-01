@@ -28,7 +28,8 @@
     "gulp-marked": "^0.2.0",
     "js-yaml": "^3.0.2",
     "gulp-streamify": "0.0.5",
-    "gulp-filter": "^0.3.1"
+    "gulp-filter": "^0.3.1",
+    "gulp-download": "0.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
