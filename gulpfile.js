@@ -42,7 +42,6 @@ gulp.task('default', ['develop']);
 
 gulp.task('readme', function() {
 	var config = yaml.safeLoad(fs.readFileSync('./_config.yml', 'utf8'));
-	var filter = gulpFilter('index.html');
 
 	download(config.project.readme)
 		.pipe(convertMD())
