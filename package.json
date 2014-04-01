@@ -18,17 +18,12 @@
     "gulp-livereload": "^1.2.0",
     "connect": "^2.14.3",
     "gulp-connect": "^1.0.10",
-    "request": "^2.34.0",
     "marked": "^0.3.2",
     "libyaml": "^0.2.3",
     "gulp-front-matter": "^1.0.0",
-    "front-matter": "^0.2.0",
     "event-stream": "^3.1.1",
-    "streamifier": "^0.1.0",
     "gulp-marked": "^0.2.0",
     "js-yaml": "^3.0.2",
-    "gulp-streamify": "0.0.5",
-    "gulp-filter": "^0.3.1",
     "gulp-download": "0.0.1"
   },
   "scripts": {
