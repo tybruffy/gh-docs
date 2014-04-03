@@ -44,7 +44,7 @@ gulp.task('readme', function() {
 	var config = yaml.safeLoad(fs.readFileSync('./_config.yml', 'utf8'));
 
 	download(config.project.readme)
-		.pipe(convertMD())
+		.pipe(es.map( convertMD )
 		.pipe(rename("readme.html"))
 		.pipe(gulp.dest("./_includes"))
 		.pipe(parseReadme())
@@ -60,16 +60,12 @@ gulp.task('readme', function() {
 		.pipe(gulp.dest("./"))
 });
 
-convertMD = function() {
-	return es.map(function (file, callback) {
-		if (file.isBuffer()) {
-			var md   = String(file.contents)
-			,	html = marked(md, {renderer: renderer})
-
-			file.contents = new Buffer(html)
-		}
-		callback(null, file)
-	})	
+convertMD = function(file, callback) {
+	if (file.isBuffer()) {
+		var html      = marked(String(file.contents), {renderer: renderer})
+		file.contents = new Buffer(html)
+	}
+	callback(null, file)
 };
 
 fileSwitch = function(newFile) {
