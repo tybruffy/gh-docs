@@ -8,15 +8,15 @@ var gulp        = require('gulp')
 ,	fs          = require('fs')
 ,	less        = require("gulp-less")
 ,	jekyll      = require("gulp-jekyll")
-,	livereload  = require("gulp-livereload")
 ,	marked      = require('marked')
-,	gmarked     = require('gulp-marked')
+// ,	gmarked     = require('gulp-marked')
 ,	yaml        = require('js-yaml')
 
 gulp.task('less', function() {
-	gutil.log('compiling less');
-	var child = require('child_process').spawn
-	,	less  = child('lessc', ['--yui-compress', './assets/less/docs.less', './assets/css/docs.min.css']);
+	gulp.src('./assets/less/docs.less')
+		.pipe( less({ compress: true }) )
+		.pipe( rename({ suffix: ".min", extname: ".css" }) )
+		.pipe( gulp.dest('./assets/css') );
 });
 
 gulp.task('jekyll', ['less'], function() {
