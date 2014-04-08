@@ -1,3 +1,11 @@
+var gulp = require('./gulp')([
+	'readme',
+]);
+
+
+
+
+
 var gulp        = require('gulp')
 ,	gutil       = require("gulp-util")
 ,	rename      = require("gulp-rename")
