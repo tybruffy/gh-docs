@@ -44,7 +44,7 @@ gulp.task('readme', function() {
 	var config = yaml.safeLoad(fs.readFileSync('./_config.yml', 'utf8'));
 
 	download(config.project.readme)
-		.pipe(es.map( convertMD )
+		.pipe(es.map( convertMD ))
 		.pipe(rename("readme.html"))
 		.pipe(gulp.dest("./_includes"))
 		.pipe(parseReadme())
