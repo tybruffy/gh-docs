@@ -1,7 +1,7 @@
 var	gulp = require('gulp')
 ,	es   = require('event-stream')
 
-module.export = function() {
+module.exports = function() {
 	return es.map(function (file, callback) {
 		var	regex     = /<h[1-6].*id="(.*)">(.*)<\/h[1-6]>/g
 		file.sections = []
