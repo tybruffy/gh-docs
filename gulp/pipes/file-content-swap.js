@@ -1,5 +1,6 @@
-var	gulp   = require('gulp')
-,	es     = require('event-stream')
+var	gulp = require('gulp')
+,	es   = require('event-stream')
+,	fs   = require('fs')
 
 module.exports = function(newFile) {
 	return es.map(function (file, callback) {
