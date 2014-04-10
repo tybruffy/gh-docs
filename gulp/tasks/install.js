@@ -1,12 +1,17 @@
 var	gulp   = require('gulp')
 ,	rename = require('gulp-rename')
-,	prompt = require('../pipes/config-prompt')
+,	gutil  = require('gulp-util')
+,	prompt = require('gulp-prompt')
+,	config = require('../pipes/config-prompt')
 
 
 module.exports = function() {
 	gulp.src('./_config.yml')
-		// .pipe( rename("_config.bak.yml") )
-		// .pipe( gulp.dest("./") )	
-		.pipe( prompt() )
+		.pipe( prompt.confirm("This will overwrite all comments in _config.yml. Continue?") )
+		.pipe( rename("_config.bak.yml") )
+		.pipe( gulp.dest("./") )	
+		.pipe( config() )
+		.pipe( rename("_config.yml") )
+		.pipe( gulp.dest("./") )
 };
 

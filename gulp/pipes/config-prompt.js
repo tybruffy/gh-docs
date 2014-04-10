@@ -14,8 +14,8 @@ module.exports = function() {
 			,	answers = getAnsObj(answers)
 			,	content = yaml.safeDump( _.merge( config, answers ) );
 
-			console.log( new Buffer(content) )
-			// file._contents = new Buffer(content)
+			// console.log( new Buffer(content) )
+			file._contents = new Buffer(content)
 
 			cb(null, file);
 		});
@@ -72,7 +72,10 @@ var questions = [
 	{
 		type: 'input',
 		name: 'repo',
-		message: 'Project Repo (/username/repo/):'
+		message: 'Project Repo (/username/repo/):',
+		validate: function(ans) {
+			return (ans.charAt(0) == "/" && ans.charAt(ans.length-1) == "/") || ans == "";
+		}
 	},
 	{
 		type: 'input',
