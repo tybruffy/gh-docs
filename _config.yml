@@ -24,7 +24,7 @@ exclude:
 project:
   name: Project Name
   repo: http://www.github.com/tybruffy/gh-docs
-  readme: https://raw.githubusercontent.com/tybruffy/slide-load/master/README.md
+  readme: https://raw.githubusercontent.com/tybruffy/slide-load/master/README.mdTEST
   version: 1.0.0
   description: A cool new project on Github
 
