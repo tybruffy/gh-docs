@@ -7,46 +7,66 @@ var	gulp   = require('gulp')
 
 module.exports = function() {
 	gulp.src('./_config.yml')
-		.pipe(prompt.prompt([{
+		.pipe( prompt.prompt(questions, handler) )
+};
+
+var questions = [
+		{
 			type: 'input',
-			name: 'project.name',
+			name: 'project',
 			message: 'Project Name:'
 		},
 		{
 			type: 'input',
-			name: 'project.repo',
+			name: 'repo',
 			message: 'Project Repo (URL):'
 		},
 		{
 			type: 'input',
-			name: 'project.readme',
+			name: 'readme',
 			message: 'Raw ReadMe URL (defaults to repo/master/README.md):'
 		},
 		{
 			type: 'input',
-			name: 'project.version',
+			name: 'version',
 			message: 'Project Version:'
 		},
 		{
 			type: 'input',
-			name: 'project.description',
+			name: 'description',
 			message: 'Project Description:'
 		},
 		{
 			type: 'input',
-			name: 'author.name',
+			name: 'author',
 			message: 'Author\'s Name:'
 		},
 		{
 			type: 'input',
-			name: 'author.website',
+			name: 'website',
 			message: 'Author\'s Website:'
-		}], function( response ) {
-			var config = yaml.safeLoad( fs.readFileSync('./_config.yml', 'utf8') )	
-			, 	data   = yaml.safeDump( _.extend( response, config ) )
+		}
+	]
 
-			console.log( _.extend( response, config ) )
-		}));
+function handler( response) {
+	var config  = yaml.safeLoad( fs.readFileSync('./_config.yml', 'utf8') )
+	,	answers = getAnsObj( response )
+	,	answers = parseAnswers( answers )
 
+	 console.log( _.extend( config, answers ) )
+}	
 
-};
+function getAnsObj( response ) {
+	var projectKeys = ['project', 'repo', 'readme', 'version', 'description']
+	,	authorKeys  = ['author', 'website']
+	,	answers     = {};
+
+	for (prop in response) {
+		var section       = _.indexOf(projectKeys, prop) != -1 ? "project" : "author"
+		,	 key          = prop === section ? "name" : prop;
+
+		answers[section]      = answers[section] || {}
+		answers[section][key] = response[prop]
+	}
+}
+
