@@ -5,7 +5,7 @@ var	gulp   = require('gulp')
 
 module.exports = function() {
 	gulp.src('./_config.yml')
-		// .pipe( rename("./_config.bak.yml") )
+		// .pipe( rename("_config.bak.yml") )
 		// .pipe( gulp.dest("./") )	
 		.pipe( prompt() )
 };

@@ -9,7 +9,7 @@ module.exports = function() {
 	return es.map(function(file, cb){
 		inquirer.prompt(questions, function(answers){
 
-			var config  = yaml.safeLoad( fs.readFileSync('./_config.yml', 'utf8') )
+			var config  = yaml.safeLoad( file._contents.toString() )
 			,	answers = parseAnswers(answers)
 			,	answers = getAnsObj(answers)
 			,	content = yaml.safeDump( _.merge( config, answers ) );
