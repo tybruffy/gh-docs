@@ -4,6 +4,7 @@ var gulp = require('./gulp')([
 	'serve',
 	'jekyll',
 	'watch',
+	'install',
 ]);
 
 gulp.task('develop', ['less', 'jekyll', 'watch', 'serve']);
