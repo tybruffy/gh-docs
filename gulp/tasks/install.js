@@ -6,12 +6,12 @@ var	gulp   = require('gulp')
 
 
 module.exports = function() {
-	gulp.src('./_config.yml')
+	gulp.src('./src/_config.yml')
 		.pipe( prompt.confirm("This will overwrite all comments in _config.yml. Continue?") )
 		.pipe( rename("_config.bak.yml") )
-		.pipe( gulp.dest("./") )	
+		.pipe( gulp.dest("./src/") )	
 		.pipe( config() )
 		.pipe( rename("_config.yml") )
-		.pipe( gulp.dest("./") )
+		.pipe( gulp.dest("./src/") )
 };
 

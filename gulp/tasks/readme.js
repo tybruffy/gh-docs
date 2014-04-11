@@ -16,16 +16,16 @@ module.exports = function() {
 	download(config.project.readme)
 		.pipe( mdConvert() )
 		.pipe( rename("./readme.html") )
-		.pipe( gulp.dest("./_includes") )
+		.pipe( gulp.dest("./src/_includes") )
 		.pipe( pullHeadings("sections", "2-6") )
 
 	.pipe( fileSwap("./index.html") )
 		.pipe( rename("./index.bak.html") )
-		.pipe( gulp.dest("./") )	
+		.pipe( gulp.dest("./src/") )	
 
 	.pipe( frontMatter({ remove: true }) )
 		.pipe( combineProps("frontMatter", ["sections"]) )
 		.pipe( writeFM("frontMatter") )
 		.pipe( rename("index.html") )
-		.pipe( gulp.dest("./") )
+		.pipe( gulp.dest("./src/") )
 };
