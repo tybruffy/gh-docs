@@ -4,7 +4,6 @@ This project is designed to quickly let developers create Github Pages for their
 ## Todos
 - Improve modularity of the config-prompt pipe.
 - Fix jekyll build when no readme.html file exists
-- Lessify Bootstrap CSS
 - Remove / Improve demos page?
 - Fix sidebar JS
 - Get new brand assets

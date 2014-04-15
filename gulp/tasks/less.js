@@ -4,7 +4,13 @@ var	gulp   = require('gulp')
 
 module.exports = function() {
 	gulp.src('./src/assets/less/docs.less')
-		.pipe( less({ compress: true }) )
-		.pipe( rename({ suffix: ".min", extname: ".css" }) )
+		.pipe( less({ 
+			compress: true, 
+			paths: ["./src/assets/less/"] 
+		}) )
+		.pipe( rename({ 
+			suffix: ".min", 
+			extname: ".css" 
+		}) )
 		.pipe( gulp.dest('./src/assets/css') );
 }
