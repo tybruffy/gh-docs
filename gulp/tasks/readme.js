@@ -11,15 +11,14 @@ var	gulp         = require('gulp')
 ,	writeFM      = require('../pipes/file-write-frontmatter')
 
 module.exports = function() {
-	var config = yaml.safeLoad(fs.readFileSync('./_config.yml', 'utf8'));
+	var config = yaml.safeLoad(fs.readFileSync('./src/_config.yml', 'utf8'));
 
 	download(config.project.readme)
 		.pipe( mdConvert() )
 		.pipe( rename("./readme.html") )
 		.pipe( gulp.dest("./src/_includes") )
 		.pipe( pullHeadings("sections", "2-6") )
-
-	.pipe( fileSwap("./index.html") )
+	.pipe( fileSwap("./src/index.html") )
 		.pipe( rename("./index.bak.html") )
 		.pipe( gulp.dest("./src/") )	
 

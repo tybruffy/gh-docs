@@ -15,16 +15,14 @@ permalink:        pretty
 # encoding:         UTF-8
 safe:             true
 exclude:
-  - node_modules
+  - index.bak.html
   - less
-  - gulpfile.js
-  - gulp
 
 # Custom vars
 project:
   name: Project Name
   repo: http://www.github.com/tybruffy/gh-docs
-  readme: https://raw.githubusercontent.com/tybruffy/slide-load/master/README.mdTEST
+  readme: https://raw.githubusercontent.com/tybruffy/slide-load/master/README.md
   version: 1.0.0
   description: A cool new project on Github
 
